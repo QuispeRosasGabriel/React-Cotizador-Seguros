@@ -1,10 +1,12 @@
 import React from "react";
+import { ContenedorHeader } from "../styledcomponents/ContenedorHeader";
+import { TextoHeader } from "../styledcomponents/TextoHeader";
 
 const Header = ({ titulo }) => {
   return (
-    <header>
-      <h1>{titulo}</h1>
-    </header>
+    <ContenedorHeader>
+      <TextoHeader>{titulo}</TextoHeader>
+    </ContenedorHeader>
   );
 };
 
