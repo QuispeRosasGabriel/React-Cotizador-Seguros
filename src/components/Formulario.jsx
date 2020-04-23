@@ -4,6 +4,7 @@ import { Label } from "../styledcomponents/Label";
 import { Select } from "../styledcomponents/Select";
 import { InputRadio } from "../styledcomponents/InputRadio";
 import { Button } from "../styledcomponents/Button";
+import { Error } from "../styledcomponents/Error";
 
 const Formulario = () => {
   const [datos, guardarDatos] = useState({
@@ -11,6 +12,7 @@ const Formulario = () => {
     year: "",
     plan: "basico",
   });
+  const [error, guardarError] = useState(false);
 
   const { marca, year, plan } = datos;
 
@@ -22,8 +24,32 @@ const Formulario = () => {
     });
   };
 
+  //Cuando el usuario envia
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (marca.trim() === "" || year.trim() === "" || plan.trim() === "") {
+      guardarError(true);
+      return;
+    }
+    guardarError(false);
+
+    //obtener la diferencia de años
+
+    //por cada año restar el 10% del valor
+
+    //Americano 15%
+    //Asiatico 5%
+    //Europeo 30%
+
+    //Plan basico 20%
+    //Plan completo 50%
+
+    //total
+  };
+
   return (
-    <form action="">
+    <form action="" onSubmit={handleSubmit}>
+      {error && <Error>Todos los campos son obligatorios</Error>}
       <Campo>
         <Label htmlFor="">Marca</Label>
         <Select name="marca" value={marca} onChange={obtenerInformacion} id="">
@@ -68,7 +94,7 @@ const Formulario = () => {
         />
         Completo
       </Campo>
-      <Button type="button">Cotizar</Button>
+      <Button type="submit">Cotizar</Button>
     </form>
   );
 };
