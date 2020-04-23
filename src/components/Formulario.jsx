@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Campo } from "../styledcomponents/Campo";
 import { Label } from "../styledcomponents/Label";
 import { Select } from "../styledcomponents/Select";
@@ -6,11 +6,27 @@ import { InputRadio } from "../styledcomponents/InputRadio";
 import { Button } from "../styledcomponents/Button";
 
 const Formulario = () => {
+  const [datos, guardarDatos] = useState({
+    marca: "",
+    year: "",
+    plan: "basico",
+  });
+
+  const { marca, year, plan } = datos;
+
+  //leer datos del formulario y colocarlos en el state
+  const obtenerInformacion = (e) => {
+    guardarDatos({
+      ...datos,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <form action="">
       <Campo>
         <Label htmlFor="">Marca</Label>
-        <Select name="" id="">
+        <Select name="marca" value={marca} onChange={obtenerInformacion} id="">
           <option value="">-- Seleccione --</option>
           <option value="americano"> Americano </option>
           <option value="europeo"> Europeo </option>
@@ -19,7 +35,7 @@ const Formulario = () => {
       </Campo>
       <Campo>
         <Label htmlFor="">Año</Label>
-        <Select name="" id="">
+        <Select name="year" value={year} onChange={obtenerInformacion} id="">
           <option value="">-- Seleccione --</option>
           <option value="2021">2021</option>
           <option value="2020">2020</option>
@@ -35,9 +51,21 @@ const Formulario = () => {
       </Campo>
       <Campo>
         <Label htmlFor="">Plan</Label>
-        <InputRadio type="radio" name="plan" value="basico" />
+        <InputRadio
+          type="radio"
+          name="plan"
+          value="basico"
+          checked={plan === "basico"}
+          onChange={obtenerInformacion}
+        />
         Básico
-        <InputRadio type="radio" name="plan" value="completo" />
+        <InputRadio
+          type="radio"
+          name="plan"
+          value="completo"
+          checked={plan === "completo"}
+          onChange={obtenerInformacion}
+        />
         Completo
       </Campo>
       <Button type="button">Cotizar</Button>
