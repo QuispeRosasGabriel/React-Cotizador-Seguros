@@ -6,7 +6,11 @@ import { InputRadio } from "../styledcomponents/InputRadio";
 import { Button } from "../styledcomponents/Button";
 import { Error } from "../styledcomponents/Error";
 
-import { obtenerDiferenciayear, calcularMarca } from "../helpers/helper";
+import {
+  obtenerDiferenciayear,
+  calcularMarca,
+  obtenerPlan,
+} from "../helpers/helper";
 
 const Formulario = () => {
   const [datos, guardarDatos] = useState({
@@ -47,10 +51,12 @@ const Formulario = () => {
     //Asiatico 5%
     //Europeo 30%
     resultado = calcularMarca(marca) * resultado;
-    console.log(resultado);
 
     //Plan basico 20%
     //Plan completo 50%
+    const incrementoPlan = obtenerPlan(plan);
+    resultado = parseFloat(incrementoPlan * resultado).toFixed(2);
+    console.log(resultado);
 
     //total
   };
