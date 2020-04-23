@@ -1,20 +1,24 @@
 import React from "react";
+import { Campo } from "../styledcomponents/Campo";
+import { Label } from "../styledcomponents/Label";
+import { Select } from "../styledcomponents/Select";
+import { InputRadio } from "../styledcomponents/InputRadio";
 
 const Formulario = () => {
   return (
     <form action="">
-      <div>
-        <label htmlFor="">Marca</label>
-        <select name="" id="">
+      <Campo>
+        <Label htmlFor="">Marca</Label>
+        <Select name="" id="">
           <option value="">-- Seleccione --</option>
           <option value="americano"> Americano </option>
           <option value="europeo"> Europeo </option>
           <option value="asiatico"> Asiático </option>
-        </select>
-      </div>
-      <div>
-        <label htmlFor="">Año</label>
-        <select name="" id="">
+        </Select>
+      </Campo>
+      <Campo>
+        <Label htmlFor="">Año</Label>
+        <Select name="" id="">
           <option value="">-- Seleccione --</option>
           <option value="2021">2021</option>
           <option value="2020">2020</option>
@@ -26,15 +30,15 @@ const Formulario = () => {
           <option value="2014">2014</option>
           <option value="2013">2013</option>
           <option value="2012">2012</option>
-        </select>
-      </div>
-      <div>
-        <label htmlFor="">Plan</label>
-        <input type="radio" name="plan" value="basico" />
+        </Select>
+      </Campo>
+      <Campo>
+        <Label htmlFor="">Plan</Label>
+        <InputRadio type="radio" name="plan" value="basico" />
         Básico
-        <input type="radio" name="plan" value="completo" />
+        <InputRadio type="radio" name="plan" value="completo" />
         Completo
-      </div>
+      </Campo>
       <button type="button">Cotizar</button>
     </form>
   );
