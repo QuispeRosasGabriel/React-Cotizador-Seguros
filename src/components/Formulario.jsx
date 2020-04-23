@@ -3,6 +3,7 @@ import { Campo } from "../styledcomponents/Campo";
 import { Label } from "../styledcomponents/Label";
 import { Select } from "../styledcomponents/Select";
 import { InputRadio } from "../styledcomponents/InputRadio";
+import { Button } from "../styledcomponents/Button";
 
 const Formulario = () => {
   return (
@@ -39,7 +40,7 @@ const Formulario = () => {
         <InputRadio type="radio" name="plan" value="completo" />
         Completo
       </Campo>
-      <button type="button">Cotizar</button>
+      <Button type="button">Cotizar</Button>
     </form>
   );
 };
