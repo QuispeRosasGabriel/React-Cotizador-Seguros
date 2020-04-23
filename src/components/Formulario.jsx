@@ -6,7 +6,7 @@ import { InputRadio } from "../styledcomponents/InputRadio";
 import { Button } from "../styledcomponents/Button";
 import { Error } from "../styledcomponents/Error";
 
-import { obtenerDiferenciayear } from "../helpers/helper";
+import { obtenerDiferenciayear, calcularMarca } from "../helpers/helper";
 
 const Formulario = () => {
   const [datos, guardarDatos] = useState({
@@ -46,6 +46,8 @@ const Formulario = () => {
     //Americano 15%
     //Asiatico 5%
     //Europeo 30%
+    resultado = calcularMarca(marca) * resultado;
+    console.log(resultado);
 
     //Plan basico 20%
     //Plan completo 50%
