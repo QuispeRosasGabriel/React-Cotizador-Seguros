@@ -6,6 +6,8 @@ import { InputRadio } from "../styledcomponents/InputRadio";
 import { Button } from "../styledcomponents/Button";
 import { Error } from "../styledcomponents/Error";
 
+import { obtenerDiferenciayear } from "../helpers/helper";
+
 const Formulario = () => {
   const [datos, guardarDatos] = useState({
     marca: "",
@@ -32,11 +34,15 @@ const Formulario = () => {
       return;
     }
     guardarError(false);
+    //una base de 2000
+    let resultado = 2000;
 
     //obtener la diferencia de años
 
-    //por cada año restar el 10% del valor
+    const diferencia = obtenerDiferenciayear(year);
 
+    //por cada año restar el 3% del valor
+    resultado -= (diferencia * 3 * resultado) / 100;
     //Americano 15%
     //Asiatico 5%
     //Europeo 30%
