@@ -1,4 +1,7 @@
-import React, { Fragment } from "react";
+import React from "react";
+import { ContenedorResumen } from "../styledcomponents/ContenedorResumen";
+import { primeraMayuscula } from "../helpers/helper";
+
 const Resumen = ({ datos }) => {
   const { marca, year, plan } = datos;
 
@@ -7,14 +10,14 @@ const Resumen = ({ datos }) => {
   }
 
   return (
-    <Fragment>
+    <ContenedorResumen>
       <h2>Resumen de cotización</h2>
       <ul>
-        <li>Marca:</li>
-        <li>Plan:</li>
-        <li>Año del auto:</li>
+        <li>Marca: {primeraMayuscula(marca)}</li>
+        <li>Plan: {primeraMayuscula(plan)}</li>
+        <li>Año del auto: {primeraMayuscula(year)}</li>
       </ul>
-    </Fragment>
+    </ContenedorResumen>
   );
 };
 export default Resumen;

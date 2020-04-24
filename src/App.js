@@ -4,6 +4,7 @@ import { Contenedor } from "./styledcomponents/Contenedor";
 import { ContenedorFormulario } from "./styledcomponents/ContenedorFormulario";
 import Formulario from "./components/Formulario";
 import Resumen from "./components/Resumen";
+import Resultado from "./components/Resultado";
 
 function App() {
   const [resumen, guardarResumen] = useState({
@@ -15,7 +16,7 @@ function App() {
     },
   });
 
-  const { datos } = resumen;
+  const { cotizacion, datos } = resumen;
 
   return (
     <Contenedor>
@@ -23,6 +24,7 @@ function App() {
       <ContenedorFormulario>
         <Formulario guardarResumen={guardarResumen} />
         <Resumen datos={datos} />
+        <Resultado cotizacion={cotizacion} />
       </ContenedorFormulario>
     </Contenedor>
   );
