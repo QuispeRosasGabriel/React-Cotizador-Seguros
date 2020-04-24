@@ -12,7 +12,7 @@ import {
   obtenerPlan,
 } from "../helpers/helper";
 
-const Formulario = () => {
+const Formulario = ({ guardarResumen }) => {
   const [datos, guardarDatos] = useState({
     marca: "",
     year: "",
@@ -56,9 +56,11 @@ const Formulario = () => {
     //Plan completo 50%
     const incrementoPlan = obtenerPlan(plan);
     resultado = parseFloat(incrementoPlan * resultado).toFixed(2);
-    console.log(resultado);
 
-    //total
+    guardarResumen({
+      cotizacion: resultado,
+      datos,
+    });
   };
 
   return (
