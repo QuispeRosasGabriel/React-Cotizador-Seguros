@@ -5,6 +5,7 @@ import { ContenedorFormulario } from "./styledcomponents/ContenedorFormulario";
 import Formulario from "./components/Formulario";
 import Resumen from "./components/Resumen";
 import Resultado from "./components/Resultado";
+import Spinner from "./components/Spinner/Spinner";
 
 function App() {
   const [resumen, guardarResumen] = useState({
@@ -16,15 +17,20 @@ function App() {
     },
   });
 
+  const [cargando, guardarCargando] = useState(false);
   const { cotizacion, datos } = resumen;
 
   return (
     <Contenedor>
       <Header titulo="Cotizador de Seguros" />
       <ContenedorFormulario>
-        <Formulario guardarResumen={guardarResumen} />
+        <Formulario
+          guardarResumen={guardarResumen}
+          guardarCargando={guardarCargando}
+        />
+        {cargando && <Spinner />}
         <Resumen datos={datos} />
-        <Resultado cotizacion={cotizacion} />
+        {!cargando && <Resultado cotizacion={cotizacion} />}
       </ContenedorFormulario>
     </Contenedor>
   );
